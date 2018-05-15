@@ -7,7 +7,7 @@ WORKDIR /app
 
 COPY . /src
 
-RUN  dotnet publish -c Release -o /out
+RUN  dotnet publish -c Release -o out
 
 ENTRYPOINT dotnet /src/out/aspcore-openshift.dll
 
