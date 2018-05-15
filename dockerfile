@@ -1,14 +1,17 @@
-FROM microsoft/aspnetcore-build:2.0
+FROM microsoft/dotnet:latest
 
-EXPOSE 8080
 ENV ASPNETCORE_URLS http://*:8080
 
-WORKDIR /src
+COPY . /var/www
 
-COPY . /src
+WORKDIR /var/www
 
-RUN  dotnet publish -c Release -o out
+RUN dotnet publish -c Release -o Publish
 
-ENTRYPOINT dotnet out/aspcore-openshift.dll
+EXPOSE 8080
 
-RUN chmod -R ug+rwx out
+WORKDIR /var/www/Publish
+
+ENTRYPOINT dotnet aspcore-openshift.dll
+
+RUN chmod -R ug+rwx /var/www
