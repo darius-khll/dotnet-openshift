@@ -20,7 +20,7 @@ namespace aspcore_openshift
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
-                .UseUrls("http://localhost:8080/")
+                .UseUrls("http://*:8080/")
                 .Build();
     }
 }
